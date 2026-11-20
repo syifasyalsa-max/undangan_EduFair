@@ -52,9 +52,10 @@
                     <!-- Google Maps Embed -->
                     <div class="mb-4 text-start">
                         <h5 class="fw-bold text-dark mb-2">🗺️ Peta Lokasi</h5>
-                        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
-                            <iframe src="https://maps.google.com/maps?q=SMKN%206%20Tangerang%20Selatan%2C%20Jl.%20Magnolia%20VI%20No.6%2C%20Jelupang&t=&z=16&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm" onclick="this.style.pointerEvents='auto';">
+                            <iframe src="https://maps.google.com/maps?q=SMKN%206%20Tangerang%20Selatan%2C%20Jl.%20Magnolia%20VI%20No.6%2C%20Jelupang&t=&z=16&ie=UTF8&iwloc=&output=embed" style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
+                        <small class="text-muted d-block mt-1">*(Sentuh peta sekali untuk menggeser lokasi)*</small>
                     </div>
 
                     <!-- Rundown Acara -->
