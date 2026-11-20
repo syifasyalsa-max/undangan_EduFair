@@ -148,3 +148,17 @@ tbody tr:hover {
     background-color: #112240; 
     border: 1.5px solid var(--gold);
 }
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px !important; 
+    }
+    
+    .card {
+        padding: 16px !important; 
+    }
+
+    .card h1 {
+        font-size: 2.1rem !important; 
+    }
+}
