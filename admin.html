@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Edu Fair 2026</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Library PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- Hubungkan ke file CSS terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+
+    <div class="container">
+        <!-- Navbar Atas -->
+        <div class="admin-navbar">
+            <h2 class="navbar-brand m-0">✨ Edu Fair &amp; Career Day 2026</h2>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="#" class="nav-link active">Admin</a>
+            </div>
+        </div>
+
+        <!-- Informasi Status Data Otomatis -->
+        <div class="card mb-4">
+            <h1 class="mb-2">Dashboard Admin - Blast Undangan</h1>
+               <p id="status-muat" class="status-text mt-3 mb-0 fw-semibold" style="color: #d97706;">Sedang membaca file CSV...</p>
+        </div>
+
+        <!-- Tabel Daftar Tamu & Tombol Kirim WA -->
+        <div class="card">
+            <h2 style="font-size: 1.25rem; color: #0f172a; margin-bottom: 16px;">Daftar Tamu Undangan</h2>
+            
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama Tamu</th>
+                            <th>Instansi</th>
+                            <th>Kategori</th>
+                            <th>No. WhatsApp</th>
+                            <th style="text-align: center;">Aksi WhatsApp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelTamu">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: #64748b; padding: 20px;">Memuat data tamu...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript untuk Membaca CSV secara Otomatis -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('data-tamu.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Gagal memuat file data-tamu.csv");
+                    }
+                    return response.text();
+                })
+                .then(csvText => {
+                    Papa.parse(csvText, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            tampilkanTabel(results.data);
+                        },
+                        error: function(err) {
+                            document.getElementById('status-muat').textContent = 'Gagal memparsing file CSV.';
+                            console.error(err);
+                        }
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('status-muat').textContent = 'File data-tamu.csv tidak ditemukan di folder yang sama (pastikan pakai Live Server).';
+                    console.error(error);
+                });
+        });
+
+        function formatNomor(nomor) {
+            nomor = String(nomor || '').trim().replace(/\D/g, '');
+            if (nomor.startsWith('08')) {
+                nomor = '62' + nomor.substring(1);
+            } else if (nomor.startsWith('8')) {
+                nomor = '62' + nomor;
+            }
+            return nomor;
+        }
+
+        function tampilkanTabel(data) {
+            const tbody = document.getElementById('tabelTamu');
+            const statusMuat = document.getElementById('status-muat');
+            tbody.innerHTML = '';
+
+            statusMuat.textContent = `${data.length} data tamu berhasil dimuat otomatis dari data-tamu.csv.`;
+
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 20px;">Tidak ada data tamu.</td></tr>`;
+                return;
+            }
+
+            const baseUrl = window.location.href.split('?')[0].replace('admin.html', 'index.html');
+
+            data.forEach(row => {
+                const nomorWA = formatNomor(row.no_whatsapp);
+                const linkUndangan = `${baseUrl}?to=${encodeURIComponent(row.nama_tamu)}&instansi=${encodeURIComponent(row.instansi || '')}&kategori=${encodeURIComponent(row.kategori || '')}`;
+                const pesan = `Yth. Bapak/Ibu *${row.nama_tamu}* (${row.instansi || '-'}).\nKami mengundang Anda untuk menghadiri acara *Edu Fair & Career Day 2026* di SMKN 6 Kota Tangerang Selatan.\n\nBerikut link undangan digital Anda:\n${linkUndangan}`;
+                const linkWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.id || '-'}</td>
+                    <td><strong>${row.nama_tamu}</strong></td>
+                    <td>${row.instansi || '-'}</td>
+                    <td><span style="background: #f1f5f9; padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; color: #334155;">${row.kategori || '-'}</span></td>
+                    <td>${nomorWA ? '+' + nomorWA : '-'}</td>
+                    <td style="text-align: center;">
+                        ${nomorWA.length >= 10 ? `<a href="${linkWA}" target="_blank" class="btn-wa-gold">Kirim WhatsApp</a>` : '<span class="text-danger small">Nomor tidak valid</span>'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>

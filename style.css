@@ -1,0 +1,150 @@
+:root {
+    --navy: #132142;
+    --navy-main: #112240;
+    --gold: #d4af37;
+    --gold-light: #fde047;
+    --gold-dark: #b48a28;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--navy);
+    color: #334155;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+.navbar-brand, h1, #namaTamu, .event-title, .guest-name {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* 2. Navbar (Digabung) */
+.navbar, .admin-navbar {
+    background-color: var(--navy);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    padding: 14px 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.navbar-brand {
+    color: var(--gold-light) !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 8px; 
+}
+
+.nav-link {
+    color: #cbd5e1 !important;
+    padding: 6px 16px !important;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--gold-light) !important;
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+/* 3. Kartu Utama & Admin (Digabung) */
+.card, .admin-card {
+    background-color: #ffffff;
+    border: 1.5px solid var(--gold);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.card h1, .admin-card h1 { 
+    color: #0f172a; 
+    font-size: 2.9rem; 
+}
+
+#namaTamu, .guest-name { 
+    color: #d97706; 
+    font-style: italic; 
+}
+
+/* 4. Tabel & Tombol WhatsApp */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    margin-top: 15px;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+}
+
+thead { 
+    background: var(--navy-main); 
+    color: var(--gold-light); 
+}
+
+th, td { 
+    padding: 14px 16px; 
+    border-bottom: 1px solid #e2e8f0; 
+    vertical-align: middle; 
+}
+
+th { 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+}
+
+td { 
+    font-size: 0.92rem; 
+}
+
+tbody tr:hover { 
+    background-color: #fffbeb; 
+}
+
+.btn-wa-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #132142;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    transition: 0.15s;
+}
+
+.btn-wa-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(212, 175, 55, 0.45);
+    color:#132142;
+}
+
+.rsvp-custom-card {
+    background-color: #112240; 
+    border: 1.5px solid var(--gold);
+}

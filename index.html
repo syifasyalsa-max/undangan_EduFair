@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Edu Fair & Career Day 2026</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hubungkan ke file style.css terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="beranda" class="pt-5 pb-5">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-10">
+                <!-- Kartu Konten Utama -->
+                <div class="card p-4 p-md-5 text-center">
+                    
+                    <!-- Header Acara -->
+                    <h4 class="text-uppercase text-secondary">Undangan Resmi</h4>
+                    <h1 class="display-4 fw-bold mb-2">Edu Fair & Career Day 2026</h1>
+                    <p class="subtitle">Pameran Pendidikan, Karier, dan Inovasi Masa Depan</p>
+                    
+                    <hr class="my-4">
+
+                    <!-- Personalisasi Nama Tamu -->
+                    <p class="mb-1 text-muted">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                    <h2 id="namaTamu" class="display-6 my-2 fw-bold" style="color: #b45309 !important;">-</h2>
+                    <p class="mb-4"><span id="kategoriTamu" class="badge bg-warning text-dark px-3 py-2 fs-6">-</span></p>
+
+                    <div class="alert alert-light border text-start p-4 mb-4">
+                        <p class="mb-0 text-dark">Dengan hormat, kami mengundang instansi Anda untuk hadir dan berpartisipasi dalam ajang tahunan sekolah kami guna mempererat kerja sama serta menjajaki peluang kolaborasi.</p>
+                    </div>
+
+                    <!-- Informasi Acara -->
+                    <div id="lokasi" class="row text-start mb-4 g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded h-100 border">
+                                <h5 class="fw-bold text-dark mb-2">📅 Waktu & Tanggal</h5>
+                                <p class="mb-0 text-muted">Senin, 23 November 2026<br>Pukul 08:00 - 15:00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded h-100 border">
+                                <h5 class="fw-bold text-dark mb-2">📍 Lokasi Acara</h5>
+                                <p class="mb-0 text-muted">Gedung SMKN 6 Tangerang Selatan<br>Jl. Magnolia VI No.6, Jelupang, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15323</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps Embed -->
+                    <div class="mb-4 text-start">
+                        <h5 class="fw-bold text-dark mb-2">🗺️ Peta Lokasi</h5>
+                        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                            <iframe src="https://maps.google.com/maps?q=SMKN%206%20Tangerang%20Selatan%2C%20Jl.%20Magnolia%20VI%20No.6%2C%20Jelupang&t=&z=16&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Rundown Acara -->
+                    <div id="rundown" class="text-start mb-4">
+                        <h5 class="fw-bold text-dark mb-3">🕒 Rundown Acara</h5>
+                        <ul class="list-group list-group-flush border rounded">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>08:00 - 08:30</span>
+                                <strong>Pembukaan & Sambutan</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>08:30 - 11:30</span>
+                                <strong>Pameran Booth Universitas & Perusahaan</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>13:00 - 14:30</span>
+                                <strong>Talkshow Karier & Dunia Industri</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>14:30 - 15:00</span>
+                                <strong>Penutupan & Networking</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Kotak Form Konfirmasi Kehadiran (RSVP) -->
+                   <div class="rsvp-custom-card p-4 p-md-5 rounded-4 text-white text-start my-4 shadow-sm">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <h3 class="fw-bold display-6 mb-2">Konfirmasi Kehadiran</h3>
+                                <p class="text-white-50 mb-0">Silakan isi formulir untuk mengonfirmasi kehadiran Anda.</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <form id="rsvp-form">
+                                    <div class="mb-3">
+                                        <label class="form-label text-white small fw-bold">Nama</label>
+                                        <input type="text" id="rsvp-nama" class="form-control" placeholder="Nama lengkap" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-white small fw-bold">Konfirmasi Kehadiran</label>
+                                        <select id="rsvp-status" class="form-select" required>
+                                            <option value="" selected disabled>Pilih konfirmasi</option>
+                                            <option value="Hadir">Hadir</option>
+                                            <option value="Berhalangan Hadir">Berhalangan Hadir</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning w-100 fw-bold py-2 text-dark">
+                                        Kirim Konfirmasi &rarr;
+                                    </button>
+                                </form>
+                                <div id="rsvp-msg" class="alert alert-success mt-3 mb-0" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small mt-4">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script JavaScript -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const nama = urlParams.get('to');
+        const kategori = urlParams.get('kategori');
+
+        // Menampilkan nama tamu
+        if (nama) {
+            document.getElementById('namaTamu').innerText = nama;
+            const rsvpNama = document.getElementById('rsvp-nama');
+            if (rsvpNama) rsvpNama.value = nama;
+        } else {
+            document.getElementById('namaTamu').innerText = "Tamu Undangan";
+        }
+
+        // Menampilkan kategori
+        if (kategori) {
+            document.getElementById('kategoriTamu').innerText = kategori;
+        } else {
+            document.getElementById('kategoriTamu').style.display = 'none';
+        }
+
+        // Logika Form RSVP
+        const rsvpForm = document.getElementById('rsvp-form');
+        if (rsvpForm) {
+            rsvpForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const namaTamu = document.getElementById('rsvp-nama').value;
+                const status = document.getElementById('rsvp-status').value;
+                
+                const msgBox = document.getElementById('rsvp-msg');
+                msgBox.textContent = `✅ Terima kasih ${namaTamu}, konfirmasi "${status}" berhasil dicatat!`;
+                msgBox.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
